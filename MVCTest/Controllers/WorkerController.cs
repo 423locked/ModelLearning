@@ -10,13 +10,26 @@ namespace MVCTest.Controllers
 {
     public class WorkerController : Controller
     {
-        public string Index()
+        public IActionResult Index()
         {
-            Worker worker = Repository.GetWorker();
+            List<Worker> workers = Repository.GetWorkers(15);
 
-            string output = $"The worker {worker.Name} is {worker.Age} y.o. and has a salary of {worker.Salary}$.";
+            return View(workers);
+        }
 
-            return output;
+        public string getDataFromViewField(string Name, int Age, int Salary)
+        {
+            return $"{Name} is {Age} years old and has a salary of {Salary}.";
+        }
+
+        public Worker getWorkerFromViewField(Worker worker)
+        {
+            return new Worker() { Age = worker.Age, Name = worker.Name, Salary = worker.Salary };
+        }
+
+        public List<Worker> getListOfWorkers(List<Worker> workers)
+        {
+            return workers;
         }
     }
 }

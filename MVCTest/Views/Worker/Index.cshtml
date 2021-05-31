@@ -1,0 +1,42 @@
+﻿@using MVCTest.Models
+@model List<Worker>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Worker Index</title>
+    </head>
+    <body>
+        <div align="center">
+            <form method="POST" action="~/Worker/getDataFromViewField">
+                <input type="text" name="Name" placeholder="Enter Name" />
+                <input type="number" name="Age" placeholder="Enter Age" />
+                <input type="number" name="Salary" placeholder="Enter Salary, $" />
+                <input type="submit" value="Send" />
+            </form>
+
+        </div>
+        <br />
+
+        <div align="center">
+            <form method="POST" action="~/Worker/getWorkerFromViewField">
+                <input type="text" name="worker.Name" placeholder="Enter Name" />
+                <input type="number" name="worker.Age" placeholder="Enter Age" />
+                <input type="number" name="worker.Salary" placeholder="Enter Salary, $" />
+                <input type="submit" value="Send" />
+            </form>
+        </div>
+        <br />
+        <h2 align="center">Array of data</h2>
+        <div align="center">
+            <form method="POST" action="~/Worker/getListOfWorkers">
+                @for (int i = 0; i < 2; i++)
+                {
+                    <input type="text" name="workers[@i].Name" placeholder="Enter Name" />
+                    <input type="number" name="workers[@i].Age" placeholder="Enter Age" />
+                    <input type="number" name="workers[@i].Salary" placeholder="Enter Salary, $" />
+                    <br />
+                }
+                <input type="submit" value="Send" />
+            </form>
+            </div>
+    </body>
+</html>

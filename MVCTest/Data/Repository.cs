@@ -12,7 +12,7 @@ namespace MVCTest.Data
         private static Random r;
         static Repository()
         {
-            names = new List<string>() { "Mike", "Michelle", "Alina", "Bob" };
+            names = new List<string>() { "Mike", "Michelle", "Alina", "Bob", "Margo", "Alex", "Sue", "Megan" };
             r = new Random();
         }
 
@@ -27,6 +27,14 @@ namespace MVCTest.Data
                 Salary = salary,
                 Name = name
             };
+        }
+
+        public static List<Worker> GetWorkers(int n)
+        {
+            List<Worker> workers = new List<Worker>();
+            for (int i = 0; i < n; i++)
+                workers.Add(GetWorker());
+            return workers;
         }
     }
 }
